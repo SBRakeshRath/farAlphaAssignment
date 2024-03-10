@@ -1,4 +1,15 @@
 //hello world
-import func from "../functions/fum.js";
+import express from "express";
+const app = express();
 
-console.log(func());
+app.get("/sayHello", (req, res) => {
+  res.json({
+    message: "Hello User.",
+  });
+});
+
+const port = 3000;
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
