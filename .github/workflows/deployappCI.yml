@@ -15,6 +15,14 @@ jobs:
                 SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
             run: |
                 echo "$SSH_PRIVATE_KEY" > ssh_key
+                ssh -i ssh_key -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST "echo SSH connection established"
+                cd /var/www/test.com
+                git pull
+    
+
+                
+
+                
         -   name: setup node
             uses: actions/setup-node@v1
             with:
