@@ -19,6 +19,10 @@ jobs:
                 echo SSH connection established
                 cd /var/www/test.com
                 git pull
+                sudo npm cache clean -f
+                sudo npm install -g n
+                sudo n stable
+                node -v
                 npm i
                 npm run build
                 pm2 stop 0
