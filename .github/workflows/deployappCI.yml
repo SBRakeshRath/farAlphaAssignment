@@ -34,38 +34,10 @@ jobs:
                 port: ${{ secrets.SSH_PORT }}
                 script: |
                     cd /var/www/test.com
-                    npm install --production
+                    npm install --omit=dev
                     pm2 stop 0
                     pm2 start 0
                     pm2 save
                     sudo /usr/sbin/service nginx restart
                 
-        # -   name: setup ssh
-        #     env:
-        #         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        #         SSH_HOST: ${{ secrets.SSH_HOST }}
-        #         SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
-        #     run: |
-        #         echo "$SSH_PRIVATE_KEY" > private_key && chmod 600 private_key
-        #         ssh -o StrictHostKeyChecking=no -i private_key ${SSH_USERNAME}@${SSH_HOST}  "
-        #         echo SSH connection established
-        #         cd /var/www/test.com
-        #         git pull
-        #         sudo npm cache clean -f
-        #         sudo npm install -g n
-        #         sudo n stable
-        #         node -v
-        #         npm i
-        #         npm run build
-        #         pm2 stop 0
-        #         pm2 start 0
-        #         pm2 save
-        #         sudo /usr/sbin/service nginx restart
-        #         "
-    
-
-                
-            
-
-
-            
+  
