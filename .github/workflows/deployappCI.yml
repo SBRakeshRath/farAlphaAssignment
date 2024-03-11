@@ -5,9 +5,16 @@ on:
 
 jobs:
     build: 
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
         -   uses: actions/checkout@v2
+        -   name: setup ssh
+            env:
+                SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+                SSH_HOST: ${{ secrets.SSH_HOST }}
+                SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+            run: |
+                echo "$SSH_PRIVATE_KEY" > ssh_key
         -   name: setup node
             uses: actions/setup-node@v1
             with:
