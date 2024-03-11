@@ -24,7 +24,7 @@ jobs:
                   port: ${{ secrets.SSH_PORT }}
                   key: ${{ secrets.SSH_PRIVATE_KEY }}
                   source: ".,!node_modules"
-                  target: "~/var/www/test.com"
+                  target: "/var/www/test.com"
                 
         # -   name: setup ssh
         #     env:
